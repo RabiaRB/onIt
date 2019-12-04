@@ -19,14 +19,14 @@ main ()
  int a[arraySize][arraySize];
  int option;
  
-displayOptions();
-cin>>option;
+option = displayOptions();
+
 
 //loop executed until user enters '1' as first command
 while (option!=1)
-	{cout<<"\n__________________________________________________\n\nSorry the array is empty, first populate it by pressing 1 to perform this task.\n\n\n";
-	displayOptions();
-	cin>>option;
+	{
+		cout<<"\n__________________________________________________\n\nSorry the array is empty, first populate it by pressing 1 to perform this task.\n\n\n";
+		displayOptions();
 	}
 
 do	
@@ -34,42 +34,36 @@ do
 		switch(option)
 		{	case 1:
 			    {populateArray(a);
-				displayOptions();
-				cin>>option;
+				option = displayOptions();
 				break;
 				}	
 				
 			case 2:
 				{showElements(a);
-				displayOptions();
-				cin>>option;
+				option = displayOptions();
 				break;
 				}
 				
 			case 3:
 				{showLargestElement(a);
-				displayOptions();
-				cin>>option;
+				option = displayOptions();
 				break;
 				}
 				
 			case 4:
 				{transposeArray(a);
 				showElements(a);
-				displayOptions();
-				cin>>option;
+				option = displayOptions();
 				break;
 				}
 			case 5:
 				{cout<<"\nThe array has been processed.\n\n\n";
-				displayOptions();
-				cin>>option;
+				option = displayOptions();
 				break;
 				}
 			default:
 				{cout<<"\nPlease enter the correct option number.\n\n\n";
-				displayOptions();
-				cin>>option;
+				option = displayOptions();
 				break;
 				}
 
@@ -80,8 +74,11 @@ while(option==1||2||3||4||5);
 }
 
 //function to display options to the user
-void displayOptions()
-{cout<<"1. Press 1 to populate a two-dimensional array with integers from 1 to 100.\n2. Press 2 to display the array elements.\n3. Press 3 to display the largest element present in the array along with its row and column index.\n4. Press 4 to find and show the transpose of the array.\n\nPlease select an option, use numbers from 1 to 5: ";
+int displayOptions()
+{
+	int selectedOption;
+	cout << "1. Press 1 to populate a two-dimensional array with integers from 1 to 100.\n2. Press 2 to display the array elements.\n3. Press 3 to display the largest element present in the array along with its row and column index.\n4. Press 4 to find and show the transpose of the array.\n\nPlease select an option, use numbers from 1 to 5: ";
+	cin >> selectedOption;
 }
 
 //populating the array with random numbers
